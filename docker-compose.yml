@@ -1,0 +1,6 @@
+version: '2'
+services:
+  prometheus:
+    build: images/prometheus
+    ports:
+      - '3000:9090'
