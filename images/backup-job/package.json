@@ -1,0 +1,19 @@
+{
+  "name": "backup-job",
+  "version": "1.0.0",
+  "description": "Recurring backup job that posts metrics to Prometheus",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": {
+    "name": "Simon Oulevay (Alpha Hydrae)",
+    "email": "npm@alphahydrae.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "chance": "^1.0.4",
+    "node-cron": "^1.1.3",
+    "request": "^2.79.0"
+  }
+}

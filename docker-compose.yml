@@ -1,6 +1,29 @@
 version: '2'
+
+networks:
+  default:
+    driver: bridge
+
 services:
+
   prometheus:
     build: images/prometheus
+    links:
+      - prometheus_push_gateway
+    restart: always
     ports:
-      - '3000:9090'
+      - '9090:9090'
+    volumes:
+      - '/vagrant/prometheus.yml:/etc/prometheus/prometheus.yml'
+
+  prometheus_push_gateway:
+    build: images/prometheus-push-gateway
+    restart: always
+    volumes:
+      - '/var/lib/prometheus-push-gateway:/var/lib/prometheus-push-gateway'
+
+  backup_job:
+    build: images/backup-job
+    links:
+      - prometheus_push_gateway
+    restart: always
